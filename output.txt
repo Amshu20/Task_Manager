@@ -1,8 +1,0 @@
-
-
----Analysis---
-The Three Frequent Letters are:a-1
-
-Least Frequent: a-1
-Total Words: 1
-Total Characters: 1
