@@ -1,8 +1,8 @@
 c=0
 list_tasks={}
 print("Welcome to Task Manager:\n")
-prev_work=input("Do you want to use a previously used file(Yes/No):\n")
-if prev_work=="Yes":
+prev_work=input("Do you want to use a previously used file(Yes/No):\n").lower()
+if prev_work=="yes":
     prev_file=input("Enter file name:\n")
     try:
         with open(prev_file,"r") as f:
@@ -12,7 +12,7 @@ if prev_work=="Yes":
     except FileNotFoundError:
         print("File Not Found,proceeding with empty list")
 while True:
-    c=input("\n1.View Tasks\n2.Add Tasks\n3.Task Updation\n4.Delete Task\n5.Exit\n")
+    c=input("\n1.View Tasks\n2.Add Tasks\n3.Task Updation\n4.Delete Task\n5.Search\n6.Exit\n")
     match(c):
         case "1":
             for i,j in list_tasks.items():
@@ -35,8 +35,14 @@ while True:
             else:
                 print("Enter valid task")
         case "5":
-            print("Thank You")
-            with open("output.txt","w") as fo:
+            search_task=input("Enter Task Name to be searched:\n")
+            if search_task in list_tasks:
+                print(f"Yes\n{search_task}-{list_tasks[search_task]}")
+            else:
+                print("Not Found\n")
+        case "6":
+            output_file=input("Enter output file name:\n")
+            with open(output_file,"w") as fo:
                 for i,j in list_tasks.items():
                     fo.write(f"{i}-{j}\n")
             break
